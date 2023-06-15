@@ -24,3 +24,4 @@ def str_counter(s): #O (N)
     for syms, count in syms_counter.items():
         print(syms, count)
 str_counter('abcnra')
+
