@@ -1,0 +1,32 @@
+h1 {
+    background-color:#de6475;
+}
+.paragraph-1 {
+    background-color: #5a47ee;
+    font-size: 32pt;
+    color: green;
+}
+.paragraph-2 {
+    border: 10px solid yellow;
+    border-radius: 5px;
+    font-size: 24;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    padding-left: 60;
+}
+.paragraph-3 {
+    font-weight: bold;
+    font-size: 22px;
+    font-family: 'Courier New';
+}
+.greeting {
+    font-style: italic;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 2px 4px 2px green;
+}
+img {
+    position: relative;
+    left: 63%;
+    bottom: -130%;
+}
