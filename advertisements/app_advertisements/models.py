@@ -1,6 +1,10 @@
 from django.db import models
-from django.contrib import admin
+from django.contrib import admin 
+from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Advertisement(models.Model):
     title = models.CharField("Заголовок", max_length=128)
@@ -9,6 +13,8 @@ class Advertisement(models.Model):
     auction = models.BooleanField("Торг", help_text="Если торг уместен, то True(1), если нет - False(0)")
     created_at = models.DateTimeField("Дата создания", auto_now_add=True)
     updated_at = models.DateTimeField("Дата обновления",auto_now=True)
+    user = models.ForeignKey(User, verbose_name='пользователь', on_delete=models.CASCADE, null=True)
+    image = models.ImageField("изображение", upload_to="advertisements/")
     
     def __str__(self):
         return f"{self.id}, {self.title}, {self.price}" 
