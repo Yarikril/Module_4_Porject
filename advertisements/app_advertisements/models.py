@@ -3,11 +3,18 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
+
+def validate_title(title):
+    if title[0] == '?':
+        raise ValidationError(_('%(title)s (заголовок) не может начинаться с ?'),params={'title': title},)
+
 class Advertisement(models.Model):
-    title = models.CharField("Заголовок", max_length=128)
+    title = models.CharField("Заголовок", max_length=128, validators=[validate_title])
     description = models.TextField("Описание")
     price = models.DecimalField("Цена", max_digits=16, decimal_places=2)
     auction = models.BooleanField("Торг", help_text="Если торг уместен, то True(1), если нет - False(0)")
